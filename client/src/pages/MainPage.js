@@ -156,7 +156,7 @@ export default function MainPage() {
           <section className="mt-5 lg:mx-72 text-black">
             {amountInSourceCurrency} {currencyNames[sourceCurrency]} is equal to{" "}
             <span className="text-green-500 font-bold">{amountInTargetCurrency}</span>
-            {currencyNames[targetCurrency]}
+            in {currencyNames[targetCurrency]}
           </section>
         ) : null}
       </div>
