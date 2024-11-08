@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import backgroundImage from '../assets/background-small.png';  
+import backgroundImage from '../assets/background-small.png';
 
 export default function MainPage() {
-  // states for the form fields
+  // States for form fields
   const [date, setDate] = useState(null);
   const [sourceCurrency, setSourceCurrency] = useState("");
   const [targetCurrency, setTargetCurrency] = useState("");
@@ -22,8 +22,6 @@ export default function MainPage() {
 
       setAmountInTargetCurrency(response.data);
       setLoading(false);
-
-      console.log(amountInSourceCurrency, amountInTargetCurrency);
     } catch (err) {
       console.error(err);
     }
@@ -43,15 +41,19 @@ export default function MainPage() {
   }, []);
 
   return (
-    <div >
-      <div className="bg-white bg-opacity-80 p-8 rounded-lg shadow-lg"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        opacity: 1, 
-      }}>
-        <h1 className="lg:mx-32 text-5xl font-bold text-green-500">Convert Your Currencies Today</h1>
+    <div>
+      <div
+        className="bg-white bg-opacity-80 p-8 rounded-lg shadow-lg"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 1,
+        }}
+      >
+        <h1 className="lg:mx-32 text-5xl font-bold text-green-500">
+          Convert Your Currencies Today
+        </h1>
         <p className="lg:mx-32 py-6 text-black">
           "Convert Your Currencies Today simplifies currency conversion for all your needs. Our platform offers real-time exchange rates and intuitive tools, making global transactions a breeze. Say goodbye to complexity and hello to seamless conversions. Start today!"
         </p>
@@ -60,7 +62,10 @@ export default function MainPage() {
             <form onSubmit={handleSubmit}>
               {/* Date */}
               <div className="mb-4">
-                <label htmlFor={date} className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
+                <label
+                  htmlFor={date}
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
+                >
                   Date
                 </label>
                 <input
@@ -75,7 +80,10 @@ export default function MainPage() {
 
               {/* Source Currency */}
               <div className="mb-4">
-                <label htmlFor={sourceCurrency} className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
+                <label
+                  htmlFor={sourceCurrency}
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
+                >
                   Source Currency
                 </label>
                 <select
@@ -96,7 +104,10 @@ export default function MainPage() {
 
               {/* Target Currency */}
               <div className="mb-4">
-                <label htmlFor={targetCurrency} className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
+                <label
+                  htmlFor={targetCurrency}
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
+                >
                   Target Currency
                 </label>
                 <select
@@ -117,7 +128,10 @@ export default function MainPage() {
 
               {/* Amount in Source Currency */}
               <div className="mb-4">
-                <label htmlFor={amountInSourceCurrency} className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
+                <label
+                  htmlFor={amountInSourceCurrency}
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
+                >
                   Amount in Source Currency
                 </label>
                 <input
@@ -130,6 +144,7 @@ export default function MainPage() {
                   required
                 />
               </div>
+
               <button className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md">
                 Get the target currency
               </button>
@@ -140,11 +155,11 @@ export default function MainPage() {
         {!loading ? (
           <section className="mt-5 lg:mx-72 text-black">
             {amountInSourceCurrency} {currencyNames[sourceCurrency]} is equal to{" "}
-            <span className="text-green-500 font-bold">{amountInTargetCurrency}</span> in {currencyNames[targetCurrency]}
+            <span className="text-green-500 font-bold">{amountInTargetCurrency}</span> in{" "}
+            {currencyNames[targetCurrency]}
           </section>
         ) : null}
       </div>
     </div>
   );
 }
-
